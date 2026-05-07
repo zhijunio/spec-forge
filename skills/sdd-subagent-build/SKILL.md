@@ -46,8 +46,8 @@ This skill is for a **worker** subagent, not the orchestrator. It receives one t
 
 - List files changed
 - List commands run
-- List the final result and any blockers
-- Hand control back to `sdd-build`
+- List the final result and any blockers — enough detail for **`sdd-build`** to **`- [x]`** the task’s **Verification** lines in **`docs/plans/...`** when passes are real
+- Hand control back to `sdd-build` (orchestrator applies plan-file checkbox updates unless the repo uses an external SSOT)
 
 ## Output Template
 

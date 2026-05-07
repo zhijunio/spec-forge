@@ -86,6 +86,7 @@ Operating model:
 ### `sdd-review`
 
 - **Purpose:** multi-axis merge readiness review — five axes; findings use **Critical / (required) / Nit / Optional / FYI** per **`skills/sdd-review/SKILL.md`** Step 4 ([code-review-and-quality](https://github.com/addyosmani/agent-skills/blob/main/skills/code-review-and-quality/SKILL.md)).
+- **Scope:** judge **the change under review** — typically **diff / changed files**, **tests that cover it**, and the author’s **verification story**, against **spec or task** intent (**`skills/sdd-review/SKILL.md`**). **`docs/features/`** and **`docs/plans/`** are **not** a default full-document audit; treat them as authoritative only when you explicitly commission spec alignment (same signal as **`skills/use-sdd/SKILL.md`**). Use **`skills/sdd-review/references/`** for extra depth when the change warrants it — not a mandatory sweep of the whole repo.
 - **Input:** spec or task, tests, and implementation (see SKILL **Review Process**).
 - **Output:** categorized feedback and verdict; optional **Review Summary** template in **`agents/code-reviewer.md`**. Deep lists: **`skills/sdd-review/references/`** (security, performance, accessibility, orchestration).
 - **Flow:** read-only reviewer role; optionally dispatch **`agents/code-reviewer.md`** + SKILL in a fresh context when your tooling supports subagents.
@@ -93,6 +94,7 @@ Operating model:
 ### `sdd-simplify`
 
 - **Purpose:** reduce complexity without intended behavior change—only inside an explicitly agreed simplify scope.
+- **Scope:** **behavior-preserving** edits only (**`skills/sdd-simplify/SKILL.md`**). Work inside a **named scope** (paths, module, “this PR”) agreed up front; prefer **recent / task-related** code and avoid **drive-by** refactors outside that scope. **`docs/features/`** and **`docs/plans/`** are optional context — not the default rewrite target unless you ask.
 - **Input:** user-named scope (paths, module, “this change”) + code in scope; **`docs/features/`** and **`docs/plans/`** optional context only.
 - **Output:** simpler code + evidence behavior is unchanged.
 - **Flow:** cut only in range; re-**`sdd-review`** if the boundary is vague or the refactor is large.

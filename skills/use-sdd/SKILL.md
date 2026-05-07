@@ -17,7 +17,7 @@ Optional: **`sdd-init`**, **`sdd-brainstorm`**, **`sdd-subagent-build`**, **`sdd
 | Context | **`sdd-init`** | Refresh **`PROJECT.md`** when facts are missing or stale |
 | Explore | **`sdd-brainstorm`** | Narrow fuzzy ideas before **`sdd-feature`** |
 | Freeze | **`sdd-feature`** then **`sdd-plan`** | Spec + executable plan |
-| Implement | **`sdd-build`** | Run the plan; **`sdd-subagent-build`** only for isolated tasks when safe |
+| Implement | **`sdd-build`** | Run the plan; **`sdd-subagent-build`** only for isolated tasks when safe; **`- [ ]` → `- [x]`** on plan **Verification** only **after** commands pass in session (**not** at **`sdd-plan`** time) |
 | Verify | **`sdd-review`** | Read-only transcript; intent from packet/diff — **not** default audit of **`docs/features/`** / **`docs/plans/`** |
 | Refine | **`sdd-simplify`** | Reduce complexity without behavior change; re-**`sdd-review`** if non-trivial |
 | Ship | **`sdd-release`** | Handoff / release notes |

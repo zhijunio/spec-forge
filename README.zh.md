@@ -79,6 +79,7 @@ English version: [README.md](./README.md)
 ### `sdd-review`
 
 - **作用：** 五轴合并就绪评审；分级 **Critical /（无前缀必须改）/ Nit / Optional / FYI**（见 **`skills/sdd-review/SKILL.md`** Step 4），对齐 **[code-review-and-quality](https://github.com/addyosmani/agent-skills/blob/main/skills/code-review-and-quality/SKILL.md)**。
+- **范围：** 面向 **本次待合并的改动** — 通常是 **diff / 变更文件**、**相关测试**、作者的 **验证说明**，并对照 **规格或任务** 意图（详见 **`skills/sdd-review/SKILL.md`**）。**默认不**把 **`docs/features/`**、**`docs/plans/`** 整份当审计对象；除非你明确要求 **规格对齐**，再把它们当作权威（与 **`skills/use-sdd/SKILL.md`** 一致）。**`skills/sdd-review/references/`** 下的清单用于 **按需加深**，不是强制整库扫描。
 - **上下文：** 规格或任务、测试与实现（见 SKILL **Review Process**）。
 - **产物：** 分类反馈与结论；可选 **`agents/code-reviewer.md`** 中的 **Review Summary** 模板。深度清单：**`skills/sdd-review/references/`**。
 - **流程：** 只读评审；若支持 subagent，可在新上下文派发 **`agents/code-reviewer.md`** + SKILL。
@@ -86,6 +87,7 @@ English version: [README.md](./README.md)
 ### `sdd-simplify`
 
 - **作用：** 在用户约定的简化范围内降复杂度，不改变既定行为。
+- **范围：** 仅做 **行为不变** 的重构（**`skills/sdd-simplify/SKILL.md`**）。在事先约定的 **命名范围**（路径、模块、「本次 PR」）内动手；优先 **最近改动 / 与任务相关** 的代码，避免范围外的 **顺手重构**。**`docs/features/`**、**`docs/plans/`** 可作上下文，**默认不**作为改写对象，除非你点名。
 - **上下文：** 用户点名的范围（路径/模块/「本次改动」）+ 范围内代码；**`docs/features/`**、**`docs/plans/`** 仅作可选上下文。
 - **产物：** 更简实现 + 行为未变证据。
 - **流程：** 只动约定范围内；边界不清或改动大则回到 **`sdd-review`**。

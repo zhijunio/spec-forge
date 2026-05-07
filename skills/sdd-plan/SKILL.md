@@ -35,6 +35,13 @@ Persist everything to **`docs/plans/<yyyy-mm-dd-feature-slug>.md`** (this repo; 
 
 **Suggested file layout:** plan **header** (below) → **Approach** + file-boundary notes → **Task** sections (insert **`## Checkpoint`** groups after every **2–3** tasks or after risky work) → **Requirement Coverage** → **Parallel Execution Plan** (if any) → **Risks / Open Questions** as needed.
 
+### Task status (plan ready ≠ tasks done)
+
+- Completing **`sdd-plan`** means the **plan file is ready for execution** — **not** that any Task is implemented.
+- Leave **every** Task **Acceptance criteria** / **Verification** checkbox as **`- [ ]`** when saving the plan. **Do not** mark tasks complete during planning.
+- **Task done** = that Task’s **Verification** commands are run during **`sdd-build`** (or a worker under it) and outcomes match the plan. Only then move **`- [ ]` → `- [x]`** in **`docs/plans/...`** — **`sdd-build`** owns that update when the plan file is the **single source of truth**. If the team uses an **external tracker** as SSOT instead, mirror the same rule: **Done** only after the same verification evidence exists (see **`sdd-build`**).
+- Optional: in **`## Checkpoint`** sections, add a one-line **progress note** (e.g. “through Task N”) when someone maintains the plan file alongside execution — still distinct from pre-checking future tasks.
+
 ### Step 1: Enter Plan Mode
 
 **Read-only** until the plan file is written:
@@ -63,7 +70,7 @@ Each task targets **minimal context** and **concrete** substeps.
 # [Feature Name] Implementation Plan
 
 > **Execution default:** **`sdd-build`** orchestrates task-by-task; for **isolated** tasks use a **fresh subagent** with **`sdd-subagent-build`**. **Parallel lanes** only if Step 6 defines them and **Files likely touched** do not overlap unsafely.
-> **Checkbox rule:** substeps use `- [ ]` with **exact commands** and **expected outcomes** where applicable.
+> **Checkbox rule:** substeps use `- [ ]` with **exact commands** and **expected outcomes** where applicable. Leave them **unchecked** until **`sdd-build`** completes verification (**Task status** above).
 > **Hard fields:** every task must include `read_first`, `acceptance_criteria`, `verification`, `dependencies`, `files likely touched`, and `estimated scope`.
 
 **Goal:** [One sentence]

@@ -27,6 +27,13 @@ Execute the plan. Do not rewrite requirements, re-plan the work, or perform form
 - After each completed task, hand the result to `sdd-review` before moving on when the task is non-trivial or touches shared contracts
 - If review recommends simplification, run `sdd-simplify` on an explicitly agreed scope (often the current task’s touched files), then re-`sdd-review` when the refactor is non-trivial before the next task
 
+## Task status updates (plan file)
+
+- **`sdd-plan`** saves tasks with **`- [ ]`** — execution (**this skill**) turns them into **`- [x]`** only when justified.
+- After the **current Task** meets its **Verification** (and any acceptance criteria you treat as gating), update **`docs/plans/<yyyy-mm-dd-feature-slug>.md`**: set the completed substeps to **`- [x]`**. Optionally tick **Checkpoint** bullets when their gate commands pass.
+- If verification **fails** or is **skipped**, **do not** check items done; say why in the handoff.
+- **`sdd-subagent-build`** workers return evidence; the **orchestrator** (`sdd-build`) applies plan-file checkbox updates unless the repo uses an external SSOT — then mirror status there with the same evidence rule.
+
 ## Process
 
 ### 1. Validate Inputs
@@ -62,6 +69,7 @@ Execute the plan. Do not rewrite requirements, re-plan the work, or perform form
 - Summarize files changed
 - Summarize commands run and outcomes
 - Call out any skipped verification and why
+- **Update the plan file:** completed Task **Verification** / acceptance lines **`- [ ]` → `- [x]`** when verification passed (**Task status updates** above); skip or partial-update if not done
 - Leave the next task clearly identifiable
 - If the task is ready, explicitly recommend `sdd-review`, `sdd-simplify`, or the next `sdd-build` task as appropriate
 - Do not claim the task is complete until the verification command has been run in this session and the output supports the claim
