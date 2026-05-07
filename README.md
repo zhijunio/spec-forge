@@ -114,8 +114,6 @@ Operating model:
 
 - **Flow:** read-only reviewer role; optionally dispatch **`agents/code-reviewer.md`** + SKILL in a fresh context when your tooling supports subagents.
 
-- **Lineage note:** five-axis structure borrows from common SDD / **[code-review-and-quality](https://github.com/addyosmani/agent-skills/blob/main/skills/code-review-and-quality/SKILL.md)**-style review; **emoji severity table** is defined in **this repo’s** **`skills/sdd-review/SKILL.md`** (not necessarily identical to upstream wording).
-
 ### `sdd-simplify`
 
 - **Purpose:** reduce complexity without intended behavior change—only inside an explicitly agreed simplify scope.
@@ -163,8 +161,6 @@ review the changes, and tell me if it's safe to ship.
 | `sdd-release`        | [obra/superpowers](https://github.com/obra/superpowers) · [OpenSpec](https://github.com/Fission-AI/OpenSpec) |
 
 ## Reference Reading
-
-- **`sdd-review`** — canonical copy in **`skills/sdd-review/SKILL.md`** (five axes + 🔴🟠🟡🔵); **`agents/code-reviewer.md`** for deliverable shape.
 
 - [OpenSpec getting started](https://github.com/Fission-AI/OpenSpec/blob/main/docs/getting-started.md) — source-of-truth
   specs, proposal/application/archive flow, and context hygiene.

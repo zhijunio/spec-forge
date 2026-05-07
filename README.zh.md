@@ -99,8 +99,6 @@ English version: [README.md](./README.md)
 
 - **流程：** 只读评审；若支持 subagent，可在新上下文派发 **`agents/code-reviewer.md`** + SKILL。
 
-- **谱系说明：** 五轴思路与常见 SDD / **[code-review-and-quality](https://github.com/addyosmani/agent-skills/blob/main/skills/code-review-and-quality/SKILL.md)** 类评审相近；**🔴🟠🟡🔵 分级表** 以本仓库 **`skills/sdd-review/SKILL.md`** 为准。
-
 ### `sdd-simplify`
 
 - **作用：** 在用户约定的简化范围内降复杂度，不改变既定行为。
@@ -148,8 +146,6 @@ English version: [README.md](./README.md)
 | `sdd-release`        | [obra/superpowers](https://github.com/obra/superpowers) · [OpenSpec](https://github.com/Fission-AI/OpenSpec) |
 
 ## 参考文章
-
-- **`sdd-review`** — 正文以 **`skills/sdd-review/SKILL.md`** 为准（五轴 + 🔴🟠🟡🔵）；交付形态见 **`agents/code-reviewer.md`**。
 
 - [OpenSpec getting started](https://github.com/Fission-AI/OpenSpec/blob/main/docs/getting-started.md) —
   规范作为事实源、提案 / 应用 / 归档流程、上下文卫生。
