@@ -1,21 +1,21 @@
 {
-  "name": "spec-forge",
-  "displayName": "spec-forge SDD Skills",
-  "description": "Spec-driven engineering skills: feature → plan → build → review → release.",
+  "name": "sdd-skills",
+  "displayName": "sdd-skills SDD Skills",
+  "description": "Skill-first SDD workflow pack: feature \u2192 plan \u2192 build \u2192 review \u2192 release.",
   "version": "0.1.0",
   "author": {
     "name": "zhijunio",
     "url": "https://github.com/zhijunio"
   },
-  "homepage": "https://github.com/zhijunio/spec-forge",
-  "repository": "https://github.com/zhijunio/spec-forge",
+  "homepage": "https://github.com/zhijunio/sdd-skills",
+  "repository": "https://github.com/zhijunio/sdd-skills",
   "license": "MIT",
   "keywords": [
     "sdd",
     "skills",
-    "spec-forge",
+    "sdd-skills",
     "workflow",
-    "spec-driven-development"
+    "skill-first"
   ],
   "skills": "./skills/",
   "agents": "./agents/",

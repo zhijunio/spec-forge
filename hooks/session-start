@@ -1,19 +1,19 @@
 #!/bin/bash
-# spec-forge session start hook — injects meta skill into new Agent sessions (Cursor plugin).
+# sdd-skills session start hook — injects meta skill into new Agent sessions (Cursor plugin).
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 SKILLS_DIR="$(dirname "$SCRIPT_DIR")/skills"
 META_SKILL="$SKILLS_DIR/use-sdd/SKILL.md"
 
 if ! command -v jq >/dev/null 2>&1; then
-  printf '%s\n' '{"priority":"IMPORTANT","message":"spec-forge: jq is required for session-start (meta-skill injection). Install jq (e.g. brew install jq). Until then, open skills/use-sdd/SKILL.md or invoke skills manually."}'
+  printf '%s\n' '{"priority":"IMPORTANT","message":"sdd-skills: jq is required for session-start (meta-skill injection). Install jq (e.g. brew install jq). Until then, open skills/use-sdd/SKILL.md or invoke skills manually."}'
   exit 0
 fi
 
 if [ -f "$META_SKILL" ]; then
   jq -cn \
     --rawfile body "$META_SKILL" \
-    '{priority:"IMPORTANT", message: ("spec-forge loaded. Follow the workflow map below to pick the right skill.\n\n" + $body)}'
+    '{priority:"IMPORTANT", message: ("sdd-skills loaded. Follow the workflow map below to pick the right skill.\n\n" + $body)}'
 else
-  echo '{"priority":"INFO","message":"spec-forge: meta skill skills/use-sdd/SKILL.md not found. Other skills may still be available."}'
+  echo '{"priority":"INFO","message":"sdd-skills: meta skill skills/use-sdd/SKILL.md not found. Other skills may still be available."}'
 fi

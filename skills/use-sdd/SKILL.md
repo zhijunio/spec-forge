@@ -1,10 +1,10 @@
 ---
 name: use-sdd
 description: >
-  Entry map for spec-forge: default SDD chain and when to use each skill. Read first in a new session to route work.
+  Entry map for sdd-skills: default SDD chain and when to use each skill. Read first in a new session to route work.
 ---
 
-# spec-forge workflow map
+# sdd-skills workflow map
 
 **Default chain:** **`sdd-feature` → `sdd-plan` → `sdd-build` → `sdd-review` → `sdd-release`**
 

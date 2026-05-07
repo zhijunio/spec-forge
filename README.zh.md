@@ -1,4 +1,4 @@
-# spec-forge
+# sdd-skills
 
 一个 SDD 风格的技能仓库，默认工作流：**`sdd-feature` → `sdd-plan` → `sdd-build` → `sdd-review` → `sdd-release`**（按需 **`sdd-subagent-build`**、**`sdd-simplify`**、**`sdd-init`**、**`sdd-brainstorm`**）。
 
@@ -24,8 +24,8 @@ English version: [README.md](./README.md)
 
 安装方式：
 
-- **本机插件：** 将仓库放入或链到 **`~/.cursor/plugins/local/spec-forge/`**（**`.cursor-plugin/plugin.json`** 须在插件根目录）。例：
-  `ln -s /你的路径/spec-forge ~/.cursor/plugins/local/spec-forge`，然后执行 **Developer: Reload Window** 或重启
+- **本机插件：** 将仓库放入或链到 **`~/.cursor/plugins/local/sdd-skills/`**（**`.cursor-plugin/plugin.json`** 须在插件根目录）。例：
+  `ln -s /你的路径/sdd-skills ~/.cursor/plugins/local/sdd-skills`，然后执行 **Developer: Reload Window** 或重启
   Cursor。若软链不生效可改用 **`cp -R`**（个别版本对软链有问题）。
 - **远程：** **设置 → Rules → Add Rule → Remote (GitHub)** 填本仓库或你的 fork。
 
