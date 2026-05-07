@@ -1,7 +1,6 @@
 # spec-forge
 
-一个 SDD 风格的技能仓库，默认工作流：**`sdd-feature` → `sdd-plan` → `sdd-build` → `sdd-review` → `sdd-release`**（按需 *
-*`sdd-subagent-build`**、**`sdd-simplify`**、**`sdd-init`**、**`sdd-brainstorm`**）。
+一个 SDD 风格的技能仓库，默认工作流：**`sdd-feature` → `sdd-plan` → `sdd-build` → `sdd-review` → `sdd-release`**（按需 **`sdd-subagent-build`**、**`sdd-simplify`**、**`sdd-init`**、**`sdd-brainstorm`**）。
 
 操作模型：
 
@@ -59,10 +58,8 @@ English version: [README.md](./README.md)
 
 - **作用：** 把冻结后的 feature 落成可执行计划。
 - **上下文：** `docs/features/<feature-slug>.md`、项目事实。
-- **产物：** `docs/plans/<yyyy-mm-dd-feature-slug>.md` — **先文件边界**、依赖顺序、纵向切片、**Checkpoint**、可选 **并行泳道
-  **、文末 **Requirement Coverage**（每条需求 → 任务）。
-- **每任务字段：** **`Covers:`**（逐字标题）、**`read_first`**、**Acceptance criteria**、**Verification**、**Dependencies**、*
-  *Files likely touched**、**Estimated scope**、**TDD** + 勾选子步骤（命令 + 期望结果）。
+- **产物：** `docs/plans/<yyyy-mm-dd-feature-slug>.md` — **先文件边界**、依赖顺序、纵向切片、**Checkpoint**、可选 **并行泳道**、文末 **Requirement Coverage**（每条需求 → 任务）。
+- **每任务字段：** **`Covers:`**（逐字标题）、**`read_first`**、**Acceptance criteria**、**Verification**、**Dependencies**、**Files likely touched**、**Estimated scope**、**TDD** + 勾选子步骤（命令 + 期望结果）。
 - **流程：** 规划阶段只读；正文只允许叙述与命令—不写实现源码；交给 **`sdd-build`**。
 
 ### `sdd-build`
@@ -82,16 +79,13 @@ English version: [README.md](./README.md)
 ### `sdd-review`
 
 - **作用：** 五轴合并就绪评审；分级 **Critical /（无前缀必须改）/ Nit / Optional / FYI**（见 **`skills/sdd-review/SKILL.md`**
-  Step 4），对齐 *
-  *[code-review-and-quality](https://github.com/addyosmani/agent-skills/blob/main/skills/code-review-and-quality/SKILL.md)
-  **。
+  Step 4），对齐 **[code-review-and-quality](https://github.com/addyosmani/agent-skills/blob/main/skills/code-review-and-quality/SKILL.md)**。
 - **范围：** 面向 **本次待合并的改动** — 通常是 **diff / 变更文件**、**相关测试**、作者的 **验证说明**，并对照 **规格或任务
   ** 意图（详见 **`skills/sdd-review/SKILL.md`**）。**默认不**把 **`docs/features/`**、**`docs/plans/`** 整份当审计对象；除非你明确要求
   **规格对齐**，再把它们当作权威（与 **`skills/use-sdd/SKILL.md`** 一致）。**`skills/sdd-review/references/`** 下的清单用于
   **按需加深**，不是强制整库扫描。
 - **上下文：** 规格或任务、测试与实现（见 SKILL **Review Process**）。
-- **产物：** 分类反馈与结论；可选 **`agents/code-reviewer.md`** 中的 **Review Summary** 模板。深度清单：*
-  *`skills/sdd-review/references/`**。
+- **产物：** 分类反馈与结论；可选 **`agents/code-reviewer.md`** 中的 **Review Summary** 模板。深度清单：**`skills/sdd-review/references/`**。
 - **流程：** 只读评审；若支持 subagent，可在新上下文派发 **`agents/code-reviewer.md`** + SKILL。
 
 ### `sdd-simplify`

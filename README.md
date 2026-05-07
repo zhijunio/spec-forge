@@ -1,8 +1,8 @@
 # spec-forge
 
-An SDD-style skill repository that provides a default workflow from *
-*`sdd-feature` → `sdd-plan` → `sdd-build` → `sdd-review` → `sdd-release`** (with optional **`sdd-subagent-build`**, *
-*`sdd-simplify`**, **`sdd-init`**, **`sdd-brainstorm`**).
+An SDD-style skill repository that provides a default workflow from
+*`sdd-feature` → `sdd-plan` → `sdd-build` → `sdd-review` → `sdd-release` (with optional `sdd-subagent-build`,
+`sdd-simplify`, `sdd-init`, `sdd-brainstorm`).
 
 Chinese version: [README.zh.md](./README.zh.md)
 
@@ -51,15 +51,13 @@ Operating model:
 - **Purpose:** turn a fuzzy idea into a direction worth freezing.
 - **Input:** a rough goal, a question, or a partial request.
 - **Output:** a narrower direction, key assumptions, risks, and the smallest blocking question if needed.
-- **Flow:** check repo docs or code first, then ask the least amount of clarification needed to unblock **`sdd-feature`
-  **.
+- **Flow:** check repo docs or code first, then ask the least amount of clarification needed to unblock **`sdd-feature`**.
 
 ### `sdd-feature`
 
 - **Purpose:** freeze scope and observable requirements into one feature document.
 - **Input:** a scoped idea, `PROJECT.md`, and any brainstorm output.
-- **Output:** `docs/features/<feature-slug>.md` with stable requirement titles (quoted verbatim in *
-  *`sdd-plan` `Covers:`**).
+- **Output:** `docs/features/<feature-slug>.md` with stable requirement titles (quoted verbatim in **`sdd-plan` `Covers:`**).
 - **Flow:** define the boundary, write observable behavior, list non-goals, and stop before implementation details creep
   in.
 
@@ -70,8 +68,7 @@ Operating model:
 - **Output:** `docs/plans/<yyyy-mm-dd-feature-slug>.md` — **File Structure First**, dependency order, vertical slices,
   **Checkpoint** sections, optional **Parallel Execution Plan**, plus **Requirement Coverage** (every spec title →
   tasks).
-- **Per-task fields:** **`Covers:`** (verbatim requirement titles), **`read_first`**, **Acceptance criteria**, *
-  *Verification**,
+- **Per-task fields:** **`Covers:`** (verbatim requirement titles), **`read_first`**, **Acceptance criteria**, **Verification**,
   **Dependencies**, **Files likely touched**, **Estimated scope**, **TDD** + checkbox substeps (commands + expected
   outcomes).
 - **Flow:** read-only until the plan file exists; prose and commands only—no implementation source in the plan; hand off
@@ -104,8 +101,7 @@ Operating model:
 - **Scope:** judge **the change under review** — typically **diff / changed files**, **tests that cover it**, and the
   author’s **verification story**, against **spec or task** intent (**`skills/sdd-review/SKILL.md`**). *
   *`docs/features/`** and **`docs/plans/`** are **not** a default full-document audit; treat them as authoritative only
-  when you explicitly commission spec alignment (same signal as **`skills/use-sdd/SKILL.md`**). Use *
-  *`skills/sdd-review/references/`** for extra depth when the change warrants it — not a mandatory sweep of the whole
+  when you explicitly commission spec alignment (same signal as **`skills/use-sdd/SKILL.md`**). Use **`skills/sdd-review/references/`** for extra depth when the change warrants it — not a mandatory sweep of the whole
   repo.
 - **Input:** spec or task, tests, and implementation (see SKILL **Review Process**).
 - **Output:** categorized feedback and verdict; optional **Review Summary** template in **`agents/code-reviewer.md`**.
