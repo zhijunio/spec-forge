@@ -45,29 +45,42 @@ Can another engineer (or agent) understand this code without the author explaini
 - **Are abstractions earning their complexity?** (Don't generalize until the third use case)
 - Would comments help clarify non-obvious intent? (But don't comment obvious code.)
 - Are there dead code artifacts: no-op variables (`_unused`), backwards-compat shims, or `// removed` comments?
+- Are there unreachable or unused functions, components, or constants after a refactor? List them and ask before
+  deleting — don't silently remove.
 
 ### 3. Architecture
 
 Does the change fit the system's design?
 
-- Does it follow existing patterns or introduce a new one? If new, is it justified?
-- Does it maintain clean module boundaries?
-- Is there code duplication that should be shared?
-- Are dependencies flowing in the right direction (no circular dependencies)?
-- Is the abstraction level appropriate (not over-engineered, not too coupled)?
+- Does it follow existing patterns? If it introduces a new one, is it justified?
+- Are module boundaries clean — each module handles one responsibility, no mixing presentation with business logic or
+  data access?
+- Is related code grouped together, and are modules loosely coupled with few cross-dependencies?
+- Do dependencies flow inward (toward domain/core) rather than outward?
+- Do dependencies point at abstractions rather than concretions?
+- Is duplicated logic shared across files?
+- Is there code for hypothetical future requirements that isn't needed now?
+- Is the abstraction level appropriate — not over-engineered, not too tightly coupled?
+- Are types substitutable without breaking contracts?
+- Are layers respected (e.g. controller → service → repository) with no layer bypassing?
+- Is the dependency necessary — can the existing stack solve this? Prefer standard library and existing utilities.
+- Are design patterns used correctly and only where a simple solution won't suffice?
 
 ### 4. Security
 
 For detailed security guidance, see **`skills/sdd-review/references/security-checklist.md`** (same role as **`security-and-hardening`** / `references/security-checklist.md` in [code-review-and-quality](https://github.com/addyosmani/agent-skills/blob/main/skills/code-review-and-quality/SKILL.md)). Does the change introduce vulnerabilities?
 
-- Is user input validated and sanitized?
+- Does the change introduce vulnerabilities?
+- Is untrusted input validated at the boundary before use?
 - Are secrets kept out of code, logs, and version control?
-- Is authentication/authorization checked where needed?
-- Are SQL queries parameterized (no string concatenation)?
-- Are outputs encoded to prevent XSS?
-- Are dependencies from trusted sources with no known vulnerabilities?
-- Is data from external sources (APIs, logs, user content, config files) treated as untrusted?
-- Are external data flows validated at system boundaries before use in logic or rendering?
+- Is authentication and authorization enforced where needed?
+- Are database queries parameterized or ORM-bound, never string-concatenated?
+- Are outputs encoded or escaped to prevent injection attacks?
+- Are security headers, CORS, and session settings still correct?
+- Are dependencies trusted, maintained, and free of known critical vulnerabilities?
+- Is data from APIs, logs, user content, and config treated as untrusted until validated?
+- Did the change add file uploads, callbacks, auth flows, or new sensitive data handling that should be flagged for manual security review?
+- If the change touches auth, data storage, external integrations, or user input, is a deeper security pass warranted before merge?
 
 ### 5. Performance
 
@@ -76,9 +89,10 @@ For detailed profiling and optimization, see **`skills/sdd-review/references/per
 - Any N+1 query patterns?
 - Any unbounded loops or unconstrained data fetching?
 - Any synchronous operations that should be async?
-- Any unnecessary re-renders in UI components?
+- Any unnecessary re-computation or re-evaluation in hot paths?
 - Any missing pagination on list endpoints?
 - Any large objects created in hot paths?
+- Any new dependencies with significant footprint impact?
 
 ## Change Sizing
 
@@ -156,13 +170,12 @@ For each file changed:
 
 Label every comment with its severity so the author knows what's required vs optional:
 
-| Prefix | Meaning | Author Action |
-|--------|---------|---------------|
-| *(no prefix)* | Required change | Must address before merge |
-| **Critical:** | Blocks merge | Security vulnerability, data loss, broken functionality |
-| **Nit:** | Minor, optional | Author may ignore — formatting, style preferences |
-| **Optional:** / **Consider:** | Suggestion | Worth considering but not required |
-| **FYI** | Informational only | No action needed — context for future reference |
+| Severity | Emoji | Meaning | Author Action |
+|-------------------|-------|--------------------|--------------------------------------------------------------------|
+| 🔴 **Critical** | 🔴 | Blocks merge | Security vulnerability, data loss, broken functionality — must fix |
+| 🟠 **Important** | 🟠 | Should fix | Must address before merge |
+| 🟡 **Suggestion** | 🟡 | Suggestion | Worth considering but not required |
+| 🔵 **Info** | 🔵 | Informational only | No action needed — context for future reference |
 
 This prevents authors from treating all feedback as mandatory and wasting time on optional suggestions.
 
