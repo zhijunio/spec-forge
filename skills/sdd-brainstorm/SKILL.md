@@ -14,8 +14,6 @@ Do not invoke implementation skills, edit code, or run implementation actions un
 
 Brainstorming ends in a spec handoff (`sdd-feature`), not coding. Do not create or edit files under `docs/features/` or `docs/plans/` in this skill—the structured summary stays in the conversation (see Output).
 
-Announce at start (match user-requested language): "I am using **sdd-brainstorm** to explore options only; no feature or plan documents."
-
 ## When to Use
 
 - The request is fuzzy or exploratory.

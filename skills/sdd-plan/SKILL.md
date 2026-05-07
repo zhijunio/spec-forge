@@ -10,8 +10,6 @@ description: >
 
 Freeze execution into small, verifiable tasks with explicit acceptance criteria and explicit `read_first` files. Keep each task **self-contained** enough for an implementer with **minimal** project context, and prefer steps that fit a **single focused session** when useful.
 
-Announce at start (match user-requested language): "I'm using **sdd-plan** to create **`docs/plans/<yyyy-mm-dd-feature-slug>.md`** (implementation plan only)."
-
 ## When to Use
 
 - **`docs/features/<feature-slug>.md`** exists and you need implementable execution units.

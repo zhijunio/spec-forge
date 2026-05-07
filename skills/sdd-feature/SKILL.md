@@ -7,8 +7,6 @@ description: Freeze facts, requirements, and success criteria into docs/features
 
 This skill freezes one scoped feature into **`docs/features/<feature-slug>.md`** as implementation-free facts, requirements, and success criteria with stable short titles, then hands off to **`sdd-plan`**—it never writes plans or code.
 
-Announce at start (match user-requested language): "I am using **sdd-feature** to freeze **`docs/features/<feature-slug>.md`** only; no plan document yet."
-
 ## When to Use
 
 - Freeze facts, requirements, and success criteria into one feature document (`sdd-brainstorm` optional).

@@ -9,8 +9,6 @@ description: >
 
 This skill is for a **worker** subagent, not the orchestrator. It receives one task, one narrow file set, and one verification target.
 
-Announce at start (match user-requested language): "I am using **sdd-subagent-build** to execute one approved task in a fresh subagent."
-
 ## When to Use
 
 - A single task from `sdd-plan` is independent enough to hand off

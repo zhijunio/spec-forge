@@ -10,8 +10,6 @@ description: >
 
 Close out a reviewed and approved change set as a release-ready handoff without adding scope. Treat release as a two-part deliverable: first a gate checklist, then a concise user-facing summary.
 
-Announce at start (match user-requested language): "I am using **sdd-release** to prepare the final release and handoff only."
-
 ## When to Use
 
 - `sdd-review` has passed, and `sdd-simplify` is either done or explicitly skipped

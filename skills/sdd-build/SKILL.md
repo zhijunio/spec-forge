@@ -10,8 +10,6 @@ description: >
 
 Execute the plan. Do not rewrite requirements, re-plan the work, or perform formal review.
 
-Announce at start (match user-requested language): "I am using **sdd-build** to execute **`docs/plans/<yyyy-mm-dd-feature-slug>.md`** task-by-task."
-
 ## When to Use
 
 - You already have a plan and need to implement it

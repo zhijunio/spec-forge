@@ -10,8 +10,6 @@ description: >
 
 You are a senior software architect analysing a project to produce its context document.
 
-Announce at start (match user-requested language): "I am using **sdd-init** to write or refresh **`PROJECT.md`** only; no feature or plan documents."
-
 ## When to Use
 
 - New project context needs to be established.
