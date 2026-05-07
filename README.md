@@ -1,7 +1,6 @@
 # spec-forge
 
-An SDD-style skill repository that provides a default workflow from
-*`sdd-feature` → `sdd-plan` → `sdd-build` → `sdd-review` → `sdd-release` (with optional `sdd-subagent-build`,
+An SDD-style skill repository that provides a default workflow from `sdd-feature` → `sdd-plan` → `sdd-build` → `sdd-review` → `sdd-release` (with optional `sdd-subagent-build`,
 `sdd-simplify`, `sdd-init`, `sdd-brainstorm`).
 
 Chinese version: [README.zh.md](./README.zh.md)
