@@ -30,8 +30,8 @@ Operating model:
 - Freeze the work: **`sdd-feature`**, then **`sdd-plan`**
 - Execute the plan: **`sdd-build`**; delegate isolated tasks to **`sdd-subagent-build`** only when file ownership does
   not overlap unsafely; parallelize lanes only when the plan says so **and** tasks are independent
-- Verify the outcome: **`sdd-review`** for assessment only — five-step process, prefix severities); no code changes
-  during review
+- Verify the outcome: **`sdd-review`** for assessment only — **five-axis** merge readiness review, **five-step** review
+  process, findings graded **🔴 / 🟠 / 🟡 / 🔵** per **`skills/sdd-review/SKILL.md`** Step 4; no code changes during review
 - Refine only if needed: **`sdd-simplify`**, then re-run **`sdd-review`** if the change is non-trivial
 - Ship the result: **`sdd-release`**
 
@@ -94,19 +94,27 @@ Operating model:
 
 ### `sdd-review`
 
-- **Purpose:** multi-axis merge readiness review — five axes; findings use **Critical / (required) / Nit / Optional /
-  FYI** per **`skills/sdd-review/SKILL.md`** Step
-  4 ([code-review-and-quality](https://github.com/addyosmani/agent-skills/blob/main/skills/code-review-and-quality/SKILL.md)).
-- **Scope:** judge **the change under review** — typically **diff / changed files**, **tests that cover it**, and the
-  author’s **verification story**, against **spec or task** intent (**`skills/sdd-review/SKILL.md`**). *
-  *`docs/features/`** and **`docs/plans/`** are **not** a default full-document audit; treat them as authoritative only
-  when you explicitly commission spec alignment (same signal as **`skills/use-sdd/SKILL.md`**). Use **`skills/sdd-review/references/`** for extra depth when the change warrants it — not a mandatory sweep of the whole
-  repo.
+- **Purpose:** **merge readiness review** on **five axes** — **Correctness**, **Readability & Simplicity**, **Architecture**, **Security**, **Performance** — plus structured feedback quality (**`skills/sdd-review/SKILL.md`** → **The Five-Axis Review**).
+- **Severity / grading (Step 4 — Categorize Findings):** prefix **every** finding with an emoji so required vs optional work is obvious:
+
+  | Emoji | Level | Typical expectation |
+  |-------|--------|----------------------|
+  | 🔴 | **Critical** | Blocks merge — must fix (security, data loss, broken behavior). |
+  | 🟠 | **Important** | Should fix before merge (unless explicitly deferred with justification). |
+  | 🟡 | **Suggestion** | Optional improvement — nice to have. |
+  | 🔵 | **Info** | Context only — no action required. |
+
+  Details and wording: **`skills/sdd-review/SKILL.md`** → **Review Process** → **Step 4**. Persona output shape: **`agents/code-reviewer.md`** (includes **What Went Well** in the template).
+
+- **Scope:** judge **the change under review** — typically **diff / changed files**, **tests that cover it**, and the author’s **verification story**, against **spec or task** intent. **`docs/features/`** and **`docs/plans/`** are **not** a default full-document audit; use them as authoritative only when you explicitly commission **spec alignment** (same as **`skills/use-sdd/SKILL.md`**). Use **`skills/sdd-review/references/`** for depth when needed — not a whole-repo pass.
+
 - **Input:** spec or task, tests, and implementation (see SKILL **Review Process**).
-- **Output:** categorized feedback and verdict; optional **Review Summary** template in **`agents/code-reviewer.md`**.
-  Deep lists: **`skills/sdd-review/references/`** (security, performance, accessibility, orchestration).
-- **Flow:** read-only reviewer role; optionally dispatch **`agents/code-reviewer.md`** + SKILL in a fresh context when
-  your tooling supports subagents.
+
+- **Output:** graded findings + verdict; optional **Review Summary** template in **`agents/code-reviewer.md`**. Deep lists: **`skills/sdd-review/references/`** (security, performance, accessibility, orchestration).
+
+- **Flow:** read-only reviewer role; optionally dispatch **`agents/code-reviewer.md`** + SKILL in a fresh context when your tooling supports subagents.
+
+- **Lineage note:** five-axis structure borrows from common SDD / **[code-review-and-quality](https://github.com/addyosmani/agent-skills/blob/main/skills/code-review-and-quality/SKILL.md)**-style review; **emoji severity table** is defined in **this repo’s** **`skills/sdd-review/SKILL.md`** (not necessarily identical to upstream wording).
 
 ### `sdd-simplify`
 
@@ -155,6 +163,8 @@ review the changes, and tell me if it's safe to ship.
 | `sdd-release`        | [obra/superpowers](https://github.com/obra/superpowers) · [OpenSpec](https://github.com/Fission-AI/OpenSpec) |
 
 ## Reference Reading
+
+- **`sdd-review`** — canonical copy in **`skills/sdd-review/SKILL.md`** (five axes + 🔴🟠🟡🔵); **`agents/code-reviewer.md`** for deliverable shape.
 
 - [OpenSpec getting started](https://github.com/Fission-AI/OpenSpec/blob/main/docs/getting-started.md) — source-of-truth
   specs, proposal/application/archive flow, and context hygiene.
