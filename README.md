@@ -157,7 +157,7 @@ review the changes, and tell me if it's safe to ship.
 | `sdd-build`          | [obra/superpowers](https://github.com/obra/superpowers)                                                      |
 | `sdd-subagent-build` | [obra/superpowers](https://github.com/obra/superpowers)                                                      |
 | `sdd-review`         | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills)                                        |
-| `sdd-simplify`       | [zhijunio/sdd-skills](https://github.com/zhijunio/sdd-skills)                                                |
+| `sdd-simplify`       | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills)                                                |
 | `sdd-release`        | [obra/superpowers](https://github.com/obra/superpowers) · [OpenSpec](https://github.com/Fission-AI/OpenSpec) |
 
 ## Reference Reading
