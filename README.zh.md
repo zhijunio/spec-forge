@@ -7,7 +7,7 @@
 - 按需发现：**`sdd-init`**；方向仍模糊时用 **`sdd-brainstorm`**
 - 冻结工作：**`sdd-feature`**，再 **`sdd-plan`**
 - 执行计划：**`sdd-build`**；独立任务交给 **`sdd-subagent-build`**，仅在文件归属安全、计划允许时再并行
-- 验证结果：**`sdd-review`**，只审不改：五步流程、前缀分级）
+- 验证结果：**`sdd-review`**，只审不改：**五轴**合并就绪评审、**五步**流程，分级 **🔴 / 🟠 / 🟡 / 🔵**（见 **`skills/sdd-review/SKILL.md`** Step 4）
 - 按需精简：**`sdd-simplify`**；改动不小则再跑 **`sdd-review`**
 - 交付结果：**`sdd-release`**
 
@@ -78,15 +78,28 @@ English version: [README.md](./README.md)
 
 ### `sdd-review`
 
-- **作用：** 五轴合并就绪评审；分级 **Critical /（无前缀必须改）/ Nit / Optional / FYI**（见 **`skills/sdd-review/SKILL.md`**
-  Step 4），对齐 **[code-review-and-quality](https://github.com/addyosmani/agent-skills/blob/main/skills/code-review-and-quality/SKILL.md)**。
-- **范围：** 面向 **本次待合并的改动** — 通常是 **diff / 变更文件**、**相关测试**、作者的 **验证说明**，并对照 **规格或任务
-  ** 意图（详见 **`skills/sdd-review/SKILL.md`**）。**默认不**把 **`docs/features/`**、**`docs/plans/`** 整份当审计对象；除非你明确要求
-  **规格对齐**，再把它们当作权威（与 **`skills/use-sdd/SKILL.md`** 一致）。**`skills/sdd-review/references/`** 下的清单用于
-  **按需加深**，不是强制整库扫描。
+- **作用：** **五轴合并就绪评审** — **正确性**、**可读性与简洁性**、**架构**、**安全**、**性能**（详见 **`skills/sdd-review/SKILL.md`** → **The Five-Axis Review**）。
+
+- **分级（Step 4 — Categorize Findings）：** 每条 finding 带 **emoji** 前缀，区分是否阻塞合并：
+
+  | Emoji | 级别 | 常见期望 |
+  |-------|------|----------|
+  | 🔴 | **Critical（关键）** | 阻塞合并，必须修（安全、丢数据、功能错误等）。 |
+  | 🟠 | **Important（重要）** | 合并前应处理（或显式延期并说明理由）。 |
+  | 🟡 | **Suggestion（建议）** | 可选改进。 |
+  | 🔵 | **Info（信息）** | 仅背景说明，不要求改动。 |
+
+  全文定义见 **`skills/sdd-review/SKILL.md`** → **Review Process** → **Step 4**。输出模版（含 **What Went Well**）：**`agents/code-reviewer.md`**。
+
+- **范围：** 面向 **本次待合并的改动** — 通常是 **diff / 变更文件**、**相关测试**、作者的 **验证说明**，并对照 **规格或任务** 意图。**默认不**把 **`docs/features/`**、**`docs/plans/`** 整份当审计对象；除非你明确要求 **规格对齐**。**`skills/sdd-review/references/`** 用于 **按需加深**，不是强制整库扫描。
+
 - **上下文：** 规格或任务、测试与实现（见 SKILL **Review Process**）。
-- **产物：** 分类反馈与结论；可选 **`agents/code-reviewer.md`** 中的 **Review Summary** 模板。深度清单：**`skills/sdd-review/references/`**。
+
+- **产物：** 分级反馈与结论；可选 **`agents/code-reviewer.md`** 中的 **Review Summary** 模板。深度清单：**`skills/sdd-review/references/`**。
+
 - **流程：** 只读评审；若支持 subagent，可在新上下文派发 **`agents/code-reviewer.md`** + SKILL。
+
+- **谱系说明：** 五轴思路与常见 SDD / **[code-review-and-quality](https://github.com/addyosmani/agent-skills/blob/main/skills/code-review-and-quality/SKILL.md)** 类评审相近；**🔴🟠🟡🔵 分级表** 以本仓库 **`skills/sdd-review/SKILL.md`** 为准。
 
 ### `sdd-simplify`
 
@@ -135,6 +148,8 @@ English version: [README.md](./README.md)
 | `sdd-release`        | [obra/superpowers](https://github.com/obra/superpowers) · [OpenSpec](https://github.com/Fission-AI/OpenSpec) |
 
 ## 参考文章
+
+- **`sdd-review`** — 正文以 **`skills/sdd-review/SKILL.md`** 为准（五轴 + 🔴🟠🟡🔵）；交付形态见 **`agents/code-reviewer.md`**。
 
 - [OpenSpec getting started](https://github.com/Fission-AI/OpenSpec/blob/main/docs/getting-started.md) —
   规范作为事实源、提案 / 应用 / 归档流程、上下文卫生。
