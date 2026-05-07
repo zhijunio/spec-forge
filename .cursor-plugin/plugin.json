@@ -1,0 +1,23 @@
+{
+  "name": "spec-forge",
+  "displayName": "spec-forge SDD Skills",
+  "description": "Spec-driven engineering skills: feature → plan → build → review → release.",
+  "version": "0.1.0",
+  "author": {
+    "name": "zhijunio",
+    "url": "https://github.com/zhijunio"
+  },
+  "homepage": "https://github.com/zhijunio/spec-forge",
+  "repository": "https://github.com/zhijunio/spec-forge",
+  "license": "MIT",
+  "keywords": [
+    "sdd",
+    "skills",
+    "spec-forge",
+    "workflow",
+    "spec-driven-development"
+  ],
+  "skills": "./skills/",
+  "agents": "./agents/",
+  "hooks": "./hooks/hooks-cursor.json"
+}
